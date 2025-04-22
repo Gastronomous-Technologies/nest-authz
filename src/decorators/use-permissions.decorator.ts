@@ -1,5 +1,5 @@
 import { SetMetadata } from '@nestjs/common';
-import { Permission, PermissionData } from '../interfaces/permission.interface';
+import { DecoratorPermission, Permission, PermissionData } from '../interfaces/permission.interface';
 import { PERMISSIONS_METADATA } from '../authz.constants';
 import { ExecutionContext } from '@nestjs/common';
 import { AuthPossession, BatchApproval } from '../types';
@@ -13,7 +13,7 @@ const defaultResourceFromContext = (
  * You can define multiple permissions, but only
  * when all of them satisfied, could you access the route.
  */
-export const UsePermissions = (...permissions: Permission[]): any => {
+export const UsePermissions = (...permissions: DecoratorPermission[]): any => {
   const perms = permissions.map(item => {
     if (!item.possession) {
       item.possession = AuthPossession.ANY;
