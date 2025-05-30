@@ -102,6 +102,13 @@ export function getPermissionsForUser(
   return enforcer.getPermissionsForUser(userOrRole);
 }
 
+export function casbinJsGetPermissionForUser(
+  enforcer: casbin.Enforcer,
+  userOrRole: string
+): Promise<string> {
+  return casbin.casbinJsGetPermissionForUser(enforcer, userOrRole);
+}
+
 export function hasPermissionForUser(
   enforcer: casbin.Enforcer,
   user: string,

@@ -205,7 +205,14 @@ export class AuthZService {
   getPermissionsForUser(userOrRole: string): Promise<string[][]> {
     return authzAPI.getPermissionsForUser(this.enforcer, userOrRole);
   }
-
+  /**
+   * Gets frontend permissions for a user or role.
+   * @param userOrRole username or role name
+   * @returns permissions in a format suitable for frontend
+   */
+  getFrontendPermissionsForUser(userOrRole: string): Promise<string> {
+    return authzAPI.casbinJsGetPermissionForUser(this.enforcer, userOrRole);
+  }
   /**
    * Determines whether a user has a permission.
    *
